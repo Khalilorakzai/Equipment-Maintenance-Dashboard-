@@ -1,0 +1,441 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>QRI Maintenance Dashboard</title>
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<!-- ── LOGIN SCREEN ── -->
+<div id="loginScreen">
+  <div class="login-card">
+    <div class="login-logo">
+      <img src="data:image/jpeg;base64,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" alt="Qarshi Research International" style="width:110px;height:110px;object-fit:contain;border-radius:12px;margin-bottom:8px;display:block;margin-left:auto;margin-right:auto;">
+      <div class="login-sub" style="margin-top:2px">Equipment Maintenance System</div>
+    </div>
+    <div class="login-title">Sign In</div>
+    <div class="login-err" id="loginErr">Invalid username or password.</div>
+    <div class="login-field">
+      <label>Username</label>
+      <input type="text" id="loginUser" placeholder="Enter your username" autocomplete="username">
+    </div>
+    <div class="login-field">
+      <label>Password</label>
+      <input type="password" id="loginPass" placeholder="Enter your password" autocomplete="current-password" onkeydown="if(event.key==='Enter')doLogin()">
+    </div>
+    <button class="login-btn" onclick="doLogin()">Sign In →</button>
+    <div class="login-forgot"><a onclick="showForgot()">Forgot password?</a></div>
+    <div class="login-hint">
+      <strong>Demo accounts:</strong><br>
+      admin / admin123 &nbsp;·&nbsp; manager / qri2024 &nbsp;·&nbsp; lab1 / lab1pass
+    </div>
+  </div>
+</div>
+
+<!-- ── FORGOT PASSWORD SCREEN ── -->
+<div id="forgotScreen">
+  <div class="forgot-card">
+    <!-- Step 1: choose username -->
+    <div class="forgot-step active" id="fStep1">
+      <div class="forgot-back" onclick="backToLogin()">← Back to Sign In</div>
+      <div class="login-title" style="text-align:left;font-size:17px;margin-bottom:6px">Forgot Password</div>
+      <p style="font-size:12px;color:var(--muted);margin-bottom:18px">Enter your username to begin the reset process.</p>
+      <div class="login-err" id="forgotErr1">Username not found.</div>
+      <div class="login-field"><label>Username</label><input type="text" id="forgotUser" placeholder="Your username"></div>
+      <button class="login-btn" onclick="forgotStep1()">Continue →</button>
+    </div>
+    <!-- Step 2: security question -->
+    <div class="forgot-step" id="fStep2">
+      <div class="forgot-back" onclick="showForgotStep(1)">← Back</div>
+      <div class="login-title" style="text-align:left;font-size:17px;margin-bottom:6px">Security Question</div>
+      <p style="font-size:12px;color:var(--muted);margin-bottom:16px" id="secQText"></p>
+      <div class="login-err" id="forgotErr2">Incorrect answer. Try again.</div>
+      <div class="login-field"><label>Your Answer</label><input type="text" id="secAnswer" placeholder="Answer…" onkeydown="if(event.key==='Enter')forgotStep2()"></div>
+      <button class="login-btn" onclick="forgotStep2()">Verify →</button>
+    </div>
+    <!-- Step 3: new password -->
+    <div class="forgot-step" id="fStep3">
+      <div class="forgot-back" onclick="showForgotStep(2)">← Back</div>
+      <div class="login-title" style="text-align:left;font-size:17px;margin-bottom:6px">Set New Password</div>
+      <div class="login-err" id="forgotErr3">Passwords do not match or too short.</div>
+      <div class="login-field">
+        <label>New Password</label>
+        <input type="password" id="newPass1" placeholder="Min 6 characters" oninput="checkPwdStrength('newPass1','pwdBar1')">
+        <div class="pwd-strength"><div class="pwd-strength-bar" id="pwdBar1"></div></div>
+      </div>
+      <div class="login-field"><label>Confirm Password</label><input type="password" id="newPass2" placeholder="Repeat new password"></div>
+      <button class="login-btn" onclick="forgotStep3()">Reset Password →</button>
+    </div>
+    <!-- Step 4: success -->
+    <div class="forgot-step" id="fStep4">
+      <div style="text-align:center;padding:10px 0">
+        <div style="font-size:44px;margin-bottom:12px">✅</div>
+        <div style="font-size:17px;font-weight:600;margin-bottom:8px">Password Reset!</div>
+        <p style="font-size:13px;color:var(--muted);margin-bottom:22px">Your password has been updated successfully.</p>
+        <button class="login-btn" onclick="backToLogin()">Back to Sign In</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ── CHANGE PASSWORD MODAL ── -->
+<div class="overlay" id="changePwdModal">
+  <div class="modal">
+    <div class="modal-title">🔐 Change Password</div>
+    <div class="login-err" id="changePwdErr" style="display:none;margin-bottom:14px"></div>
+    <div class="form-row">
+      <div class="fg"><label>Current Password *</label><input type="password" id="cp-old" placeholder="Current password"></div>
+    </div>
+    <div class="form-row">
+      <div class="fg">
+        <label>New Password *</label>
+        <input type="password" id="cp-new1" placeholder="Min 6 characters" oninput="checkPwdStrength('cp-new1','pwdBar2')">
+        <div class="pwd-strength"><div class="pwd-strength-bar" id="pwdBar2"></div></div>
+      </div>
+    </div>
+    <div class="form-row">
+      <div class="fg"><label>Confirm New Password *</label><input type="password" id="cp-new2" placeholder="Repeat new password"></div>
+    </div>
+    <div class="modal-footer">
+      <button class="btn" onclick="closeModal('changePwdModal')">Cancel</button>
+      <button class="btn primary" onclick="doChangePwd()">Update Password</button>
+    </div>
+  </div>
+</div>
+
+<!-- ── HEALTH STATUS MODAL ── -->
+<div class="overlay" id="healthModal">
+  <div class="modal">
+    <div class="modal-title" id="healthModalTitle">💊 Update Equipment Health</div>
+    <input type="hidden" id="h-eid">
+    <div class="form-row">
+      <div class="fg">
+        <label>Overall Health Status *</label>
+        <select id="h-status">
+          <option value="Excellent">🟢 Excellent — Fully operational, no issues</option>
+          <option value="Good">🟩 Good — Working well, minor wear</option>
+          <option value="Fair">🟡 Fair — Functional, needs attention soon</option>
+          <option value="Poor">🟠 Poor — Degraded, schedule maintenance</option>
+          <option value="Critical">🔴 Critical — Out of service / urgent repair</option>
+        </select>
+      </div>
+    </div>
+    <div class="form-row">
+      <div class="fg"><label>Health Score (0–100)</label><input type="number" id="h-score" min="0" max="100" placeholder="e.g. 85"></div>
+      <div class="fg"><label>Assessed By</label><input type="text" id="h-by" placeholder="Name / Dept"></div>
+    </div>
+    <div class="form-row">
+      <div class="fg"><label>Assessment Date</label><input type="date" id="h-date"></div>
+      <div class="fg"><label>Next Assessment Due</label><input type="date" id="h-next"></div>
+    </div>
+    <div class="form-row">
+      <div class="fg"><label>Health Remarks</label><textarea id="h-notes" placeholder="Observations, visible faults, performance notes…"></textarea></div>
+    </div>
+    <div class="modal-footer">
+      <button class="btn" onclick="closeModal('healthModal')">Cancel</button>
+      <button class="btn primary" onclick="saveHealth()">Save Health Status</button>
+    </div>
+  </div>
+</div>
+
+<header class="hdr">
+  <div class="hdr-l">
+    <div class="hdr-logo" style="padding:2px;background:white;"><img src="data:image/jpeg;base64,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" alt="QRI" style="width:30px;height:30px;object-fit:contain;border-radius:4px;display:block;"></div>
+    <div>
+      <div class="hdr-title">Qarshi Research International</div>
+      <div class="hdr-sub">Equipment Maintenance Dashboard</div>
+    </div>
+  </div>
+  <div class="hdr-r" id="clock"></div>
+  <div class="user-pill" id="userPill" onclick="toggleUserMenu()">
+    <div class="user-av" id="userAv">A</div>
+    <div class="user-name" id="userNameDisp">Admin</div>
+    <span style="font-size:10px;color:rgba(255,255,255,0.5)">▾</span>
+    <div class="user-dropdown" id="userDropdown">
+      <div class="user-dd-item" onclick="openChangePwd()">🔐 Change Password</div>
+      <hr class="user-dd-sep">
+      <div class="user-dd-item danger" onclick="doLogout()">⏏ Sign Out</div>
+    </div>
+  </div>
+</header>
+
+<div class="wrap">
+  <nav class="sidebar">
+    <div class="sb-label">Laboratories</div>
+    <button class="lab-btn active" onclick="selectLab('all')" data-lab="all">
+      <div class="lab-icon">🏢</div><span>All Labs</span><span class="lab-count" id="cnt-all">0</span>
+    </button>
+    <button class="lab-btn" onclick="selectLab('Chemical Lab')" data-lab="Chemical Lab">
+      <div class="lab-icon">⚗️</div><span>Chemical Lab</span><span class="lab-count" id="cnt-CL">0</span>
+    </button>
+    <button class="lab-btn" onclick="selectLab('Microbiology Lab Hattar')" data-lab="Microbiology Lab Hattar">
+      <div class="lab-icon">🔬</div><span style="font-size:12px">Microbio. Hattar</span><span class="lab-count" id="cnt-MH">0</span>
+    </button>
+    <button class="lab-btn" onclick="selectLab('Microbiology Lab Lahore')" data-lab="Microbiology Lab Lahore">
+      <div class="lab-icon">🧫</div><span style="font-size:12px">Microbio. Lahore</span><span class="lab-count" id="cnt-ML">0</span>
+    </button>
+    <button class="lab-btn" onclick="selectLab('Calibration Lab')" data-lab="Calibration Lab">
+      <div class="lab-icon">🎯</div><span>Calibration Lab</span><span class="lab-count" id="cnt-CB">0</span>
+    </button>
+    <button class="lab-btn" onclick="selectLab('Physical Lab')" data-lab="Physical Lab">
+      <div class="lab-icon">⚖️</div><span>Physical Lab</span><span class="lab-count" id="cnt-PL">0</span>
+    </button>
+
+    <hr class="sb-divider">
+    <div class="sb-label">Views</div>
+    <button class="lab-btn" id="calNavBtn" onclick="showCalendarView()" data-lab="__cal__">
+      <div class="lab-icon">📅</div><span style="font-size:12px">PM Calendar</span>
+    </button>
+    <hr class="sb-divider">
+    <div class="sb-label">Data Controls</div>
+    <button class="sb-action-btn" id="saveDataBtn" onclick="manualSave()" style="background:var(--green-l);color:var(--green);border-color:#86efac44;font-weight:600">💾 Save Data</button>
+    <button class="sb-action-btn" onclick="clearAllStoredData()" style="background:#fbeaea; color:#c0392b; border-color:#f5c2c2;">🗑 Reset Database</button>
+    <button class="sb-action-btn" onclick="exportJSON()">⬇ Export JSON</button>
+    <button class="sb-action-btn" id="importTrigger" onclick="document.getElementById('fileInput').click()">⬆ Import JSON</button>
+    <input type="file" id="fileInput" accept=".json" style="display:none" onchange="importJSON(event)">
+  </nav>
+
+  <div class="content">
+
+    <div class="kpi-row">
+      <div class="kpi"><div class="kpi-lbl">Total Equipment</div><div class="kpi-val" id="kpi-total">0</div><div class="kpi-sub">Across all labs</div></div>
+      <div class="kpi green"><div class="kpi-lbl">Compliant</div><div class="kpi-val" id="kpi-ok">0</div><div class="kpi-sub">PM up to date</div></div>
+      <div class="kpi amber"><div class="kpi-lbl">Due Soon</div><div class="kpi-val" id="kpi-soon">0</div><div class="kpi-sub">Within 30 days</div></div>
+      <div class="kpi red"><div class="kpi-lbl">Overdue</div><div class="kpi-val" id="kpi-overdue">0</div><div class="kpi-sub">PM expired</div></div>
+      <div class="kpi purple"><div class="kpi-lbl">Corrective</div><div class="kpi-val" id="kpi-corr">0</div><div class="kpi-sub">Maintenance logged</div></div>
+    </div>
+
+    <div class="upcoming-section">
+      <div class="section-hdr"><span class="section-title">📅 Upcoming &amp; Overdue Maintenance</span></div>
+      <div class="upcoming-grid" id="upcomingGrid"></div>
+    </div>
+
+    <div class="charts-row">
+      <div class="chart-box">
+        <div class="section-hdr"><span class="section-title">📊 Status by Lab</span></div>
+        <canvas id="barChart"></canvas>
+      </div>
+      <div class="chart-box">
+        <div class="section-hdr"><span class="section-title">🥧 Overall Distribution</span></div>
+        <canvas id="pieChart"></canvas>
+      </div>
+    </div>
+
+    <div class="toolbar">
+      <div class="srch"><span class="srch-ico">🔍</span><input type="text" id="searchInput" placeholder="Search equipment…" oninput="renderTable()"></div>
+      <select id="labFilter" onchange="renderTable()">
+        <option value="all">All Labs</option>
+        <option>Chemical Lab</option>
+        <option>Microbiology Lab Hattar</option>
+        <option>Microbiology Lab Lahore</option>
+        <option>Calibration Lab</option>
+        <option>Physical Lab</option>
+      </select>
+      <select id="typeFilter" onchange="renderTable()">
+        <option value="all">All Types</option>
+        <option>Analytical</option><option>Measuring</option><option>Incubation</option>
+        <option>Separation</option><option>Safety</option><option>Optical</option><option>Sterlization</option><option>Other</option>
+      </select>
+      <select id="sortSel" onchange="applySortSel()">
+        <option value="due">Sort: Due Date</option>
+        <option value="name">Sort: Name</option>
+        <option value="lab">Sort: Lab</option>
+        <option value="code">Sort: Code</option>
+      </select>
+      <div class="sep"></div>
+      <span class="chip on-all" data-st="all" onclick="setSF('all')">All</span>
+      <span class="chip" data-st="ok" onclick="setSF('ok')">✔ Compliant</span>
+      <span class="chip" data-st="soon" onclick="setSF('soon')">⚠ Due Soon</span>
+      <span class="chip" data-st="overdue" onclick="setSF('overdue')">✖ Overdue</span>
+      <span class="chip" data-st="corrective" onclick="setSF('corrective')">🔧 Corrective</span>
+      <div class="sep"></div>
+      <button class="btn primary" onclick="openAddModal()">＋ Add Equipment</button>
+      <button class="btn grn" onclick="downloadCSV()">⬇ CSV</button>
+      <button class="btn" onclick="printReport()">🖨 Report</button>
+    </div>
+
+    <div class="tbl-wrap">
+      <div class="tbl-head">
+        <div class="tbl-title" id="tblTitle">All Equipment</div>
+        <div class="tbl-sub" id="tblSub">Click on an equipment name to see its full history</div>
+      </div>
+      <div class="tbl-scroll">
+        <table>
+          <thead>
+            <tr>
+              <th onclick="colSort('name')">Equipment ▸</th>
+              <th onclick="colSort('code')">Code ▸</th>
+              <th onclick="colSort('lab')">Lab ▸</th>
+              <th>Type</th>
+              <th onclick="colSort('due')">PM Due ▸</th>
+              <th>Days Left</th>
+              <th>PM Status</th>
+              <th>Health</th>
+              <th>Last PM</th>
+              <th>Actions</th>
+            </tr>
+          </thead>
+          <tbody id="tblBody"></tbody>
+        </table>
+      </div>
+      <div class="pagination">
+        <span id="pgInfo"></span>
+        <div class="pg-btns" id="pgBtns"></div>
+      </div>
+    </div>
+
+    <div class="history-section" id="historySection">
+      <div class="tbl-head" style="border-bottom: 1px solid var(--border)">
+        <div class="tbl-title" id="historyTitle">Equipment Maintenance History</div>
+        <button class="btn" onclick="document.getElementById('historySection').classList.remove('show')" style="font-size:11px; padding:4px 8px">✕ Close History</button>
+      </div>
+      <div class="history-layout">
+        <div class="history-meta-box" id="historyMeta">
+          </div>
+        <div class="history-timeline-box">
+          <div style="font-weight:600; font-size:12px; color:var(--muted); text-transform:uppercase; letter-spacing:0.05em">All Maintenance Logs (Scheduled &amp; Corrective)</div>
+          <div class="tbl-scroll" style="border: 1px solid var(--border); border-radius:6px">
+            <table class="history-table">
+              <thead>
+                <tr>
+                  <th style="width:90px">Date</th>
+                  <th style="width:90px">Type</th>
+                  <th>Issue/Task Description</th>
+                  <th>Action Taken</th>
+                  <th style="width:110px">Technician/Resp.</th>
+                  <th style="width:75px">Actions</th>
+                </tr>
+              </thead>
+              <tbody id="historyTableBody">
+                </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="log-section">
+      <div class="log-hdr">
+        <div class="tbl-title">🗒 Maintenance Log Overview</div>
+        <button class="btn" onclick="exportLog()" style="font-size:12px;padding:5px 10px">⬇ Export Log</button>
+      </div>
+      <div class="log-body" id="logBody"></div>
+    </div>
+
+    <!-- ── PM CALENDAR ── -->
+    <div class="cal-section" id="calSection" style="display:none">
+      <div class="cal-hdr">
+        <div class="cal-hdr-title">📅 Preventive Maintenance Calendar</div>
+        <div class="cal-hdr-controls">
+          <button class="btn" onclick="calPrevYear()">◀ Prev Year</button>
+          <span class="cal-year-label" id="calYearLabel">2025</span>
+          <button class="btn" onclick="calNextYear()">Next Year ▶</button>
+          <div class="cal-half-tabs">
+            <button class="cal-half-tab on" id="calH1Tab" onclick="setCalHalf(1)">Jan – Jun</button>
+            <button class="cal-half-tab" id="calH2Tab" onclick="setCalHalf(2)">Jul – Dec</button>
+          </div>
+          <button class="btn grn" onclick="exportCalCSV()">⬇ Export CSV</button>
+        </div>
+      </div>
+      <div class="cal-body">
+        <div class="cal-lab-filters" id="calLabFilters"></div>
+        <div class="cal-summary" id="calSummary"></div>
+        <div class="cal-grid" id="calGrid"></div>
+        <div class="cal-legend" style="margin-top:12px">
+          <strong style="font-size:11px;color:var(--muted)">Legend:</strong>
+          <div class="cal-leg-item"><div class="cal-leg-dot" style="background:var(--green)"></div><span style="font-size:11px">Compliant PM</span></div>
+          <div class="cal-leg-item"><div class="cal-leg-dot" style="background:var(--amber)"></div><span style="font-size:11px">Due within 30 days</span></div>
+          <div class="cal-leg-item"><div class="cal-leg-dot" style="background:var(--red)"></div><span style="font-size:11px">Overdue PM</span></div>
+          <div class="cal-leg-item"><div class="cal-leg-dot" style="background:var(--primary)"></div><span style="font-size:11px">Today</span></div>
+        </div>
+        <div class="cal-eq-panel" id="calEqPanel">
+          <div class="cal-eq-phdr"><div><div class="cal-eq-ptitle" id="calEqPanelTitle">Equipment Due on Selected Date</div><div class="cal-eq-psub" id="calEqPanelSub"></div></div><div class="cal-eq-pactions"><button class="btn grn" onclick="exportDayPDF()">⬇ Export PDF</button><button class="btn" onclick="exportDayCSV()">⬇ Export CSV</button><button class="pm-close-btn" title="Close" onclick="document.getElementById('calEqPanel').classList.remove('show')">✕</button></div></div>
+          <div class="pm-tbl-wrap"><table class="pm-tbl"><thead><tr><th class="sn-col">#</th><th>Equipment Name</th><th>Equipment Code</th><th>Laboratory</th><th>Type</th><th>Custodian</th><th>Make / Model</th><th>Last PM Date</th><th>PM Frequency</th><th>PM Status</th><th>Health Status</th><th>Remarks</th></tr></thead><tbody id="calEqTbody"></tbody></table></div>
+          <div class="pm-empty" id="calEqEmpty" style="display:none">No equipment found for this date.</div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<div class="overlay" id="eqModal">
+  <div class="modal">
+    <div class="modal-title" id="eqModalTitle">➕ Add Equipment</div>
+    <div class="form-row">
+      <div class="fg"><label>Equipment Name *</label><input type="text" id="f-name" placeholder="e.g. Autoclave"></div>
+      <div class="fg" style="max-width:145px"><label>Equipment Code *</label><input type="text" id="f-code" placeholder="e.g. QR-CB-001"></div>
+    </div>
+    <div class="form-row">
+      <div class="fg"><label>Laboratory *</label>
+        <select id="f-lab"><option value="">Select…</option><option>Chemical Lab</option><option>Microbiology Lab Hattar</option><option>Microbiology Lab Lahore</option><option>Calibration Lab</option><option>Physical Lab</option></select>
+      </div>
+      <div class="fg"><label>Type</label>
+        <select id="f-type"><option>Analytical</option><option>Measuring</option><option>Incubation</option><option>Separation</option><option>Safety</option><option>Sterilization</option><option>Optical</option><option>Other</option></select>
+      </div>
+    </div>
+    <div class="form-row">
+      <div class="fg"><label>PM Due Date *</label><input type="date" id="f-due"></div>
+      <div class="fg"><label>Last PM Date</label><input type="date" id="f-last"></div>
+    </div>
+    <div class="form-row">
+      <div class="fg"><label>PM Frequency</label>
+        <select id="f-freq"><option>Monthly</option><option>Quarterly</option><option>Bi-annually</option><option>Annual</option><option>As needed</option></select>
+      </div>
+      <div class="fg"><label>Maintenance Type</label>
+        <select id="f-mtype"><option>Preventive</option><option>Corrective</option><option>Installation</option></select>
+      </div>
+    </div>
+    <div class="form-row">
+      <div class="fg"><label>Responsible Person</label><input type="text" id="f-person" placeholder="Name / Dept"></div>
+      <div class="fg"><label>Make / Model</label><input type="text" id="f-model" placeholder="Manufacturer"></div>
+    </div>
+    <div class="form-row">
+      <div class="fg"><label>Notes</label><textarea id="f-notes" placeholder="Remarks…"></textarea></div>
+    </div>
+    <div class="modal-footer">
+      <button class="btn" onclick="closeModal('eqModal')">Cancel</button>
+      <button class="btn primary" id="eqSaveBtn" onclick="saveEquipment()">Save Equipment</button>
+    </div>
+  </div>
+</div>
+
+<div class="overlay" id="logModal">
+  <div class="modal">
+    <div class="modal-title" id="logModalTitle">🔧 Log Corrective Maintenance</div>
+    <input type="hidden" id="log-id">
+    <input type="hidden" id="log-eid">
+    <div class="form-row">
+      <div class="fg"><label>Issue / Task Description *</label><textarea id="log-issue" style="min-height:76px" placeholder="Describe the problem or planned preventive check…"></textarea></div>
+    </div>
+    <div class="form-row">
+      <div class="fg"><label>Action Taken *</label><textarea id="log-action" style="min-height:60px" placeholder="What actions were completed…"></textarea></div>
+    </div>
+    <div class="form-row">
+      <div class="fg"><label>Date</label><input type="date" id="log-date"></div>
+      <div class="fg"><label>Technician / Engineer</label><input type="text" id="log-tech" placeholder="Name or Department"></div>
+    </div>
+    <div class="form-row">
+      <div class="fg"><label>Type</label>
+        <select id="log-type">
+          <option value="Corrective">Corrective</option>
+          <option value="Preventive">Preventive</option>
+          <option value="Preventive">Installation</option>
+        </select>
+      </div>
+    </div>
+    <div class="modal-footer">
+      <button class="btn" onclick="closeModal('logModal')">Cancel</button>
+      <button class="btn primary" id="logSaveBtn" onclick="saveLog()">Save Log</button>
+    </div>
+  </div>
+</div>
+
+<div id="toast"></div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
+<script src="app.js"></script>
+</body>
+</html>
